@@ -5,6 +5,7 @@ import seaborn as sns
 import plotly.express as px
 import streamlit as st
 from numerize.numerize import numerize
+from PIL import Image
 
 st.set_page_config(
     page_title="Udemy Dashboard",
