@@ -12,7 +12,7 @@ st.set_page_config(
     layout="wide",  # This makes the layout wide instead of centered
     initial_sidebar_state="expanded"  # The sidebar is expanded by default
 )
-df = pd.read_csv("C:/Users/omar5/OneDrive/Desktop/udemy_data_clean.csv")
+df = pd.read_csv("udemy_data_clean.csv")
 st.sidebar.header('Udemy Dashboard Filter')
 st.sidebar.image('udemy.webp')
 st.sidebar.write('This dataset contain information about online courses, from a platform like Udemy.')
