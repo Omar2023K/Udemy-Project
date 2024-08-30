@@ -16,8 +16,14 @@ st.set_page_config(
 df = pd.read_csv("udemy_data_clean.csv")
 st.sidebar.header('Udemy Dashboard Filter')
 st.sidebar.write('This dataset contain information about online courses, from a platform like Udemy.')
-img = image.open('udemy.jpg')
-st.sidebar.image('img')
+try:
+    img = Image.open('udemy.jpg')  # Adjust the path as necessary
+    st.sidebar.image(img, use_column_width=True)
+except Exception as e:
+    st.sidebar.write(f"Error opening image: {e}")
+st.sidebar.image('udemy.jpg', use_column_width=True)   
+#img = image.open('udemy.jpg')
+#st.sidebar.image('img')
 #st.sidebar.image('./images/udemy.jpg', use_column_width=True)
 years = df['year'].unique().tolist()
 years.insert(0, 'All')
