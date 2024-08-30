@@ -15,9 +15,9 @@ st.set_page_config(
 )
 df = pd.read_csv("udemy_data_clean.csv")
 st.sidebar.header('Udemy Dashboard Filter')
-st.sidebar.write('This dataset contain information about online courses, from a platform like Udemy.')
-
 st.sidebar.image('Udemy.jpg')
+
+st.sidebar.write('This dataset contain information about online courses, from a platform like Udemy.')
 years = df['year'].unique().tolist()
 years.insert(0, 'All')
 selected_year = st.sidebar.selectbox('Select Year', options=years)
