@@ -14,7 +14,10 @@ st.set_page_config(
 )
 df = pd.read_csv("udemy_data_clean.csv")
 st.sidebar.header('Udemy Dashboard Filter')
-st.sidebar.image('./udemy.webp')
+#st.sidebar.image('./udemy.webp')
+uploaded_image = st.sidebar.file_uploader("Upload an image", type=["png", "jpg", "jpeg", "webp"])
+if uploaded_image is not None:
+    st.sidebar.image(uploaded_image)
 st.sidebar.write('This dataset contain information about online courses, from a platform like Udemy.')
 
 years = df['year'].unique().tolist()
