@@ -5,7 +5,7 @@ import seaborn as sns
 import plotly.express as px
 import streamlit as st
 from numerize.numerize import numerize
-from PIL import Image
+
 
 st.set_page_config(
     page_title="Udemy Dashboard",
@@ -16,15 +16,8 @@ st.set_page_config(
 df = pd.read_csv("udemy_data_clean.csv")
 st.sidebar.header('Udemy Dashboard Filter')
 st.sidebar.write('This dataset contain information about online courses, from a platform like Udemy.')
-try:
-    img = Image.open('udemy.jpg')  # Adjust the path as necessary
-    st.sidebar.image(img, use_column_width=True)
-except Exception as e:
-    st.sidebar.write(f"Error opening image: {e}")
-st.sidebar.image('udemy.jpg', use_column_width=True)   
-#img = image.open('udemy.jpg')
-#st.sidebar.image('img')
-#st.sidebar.image('./images/udemy.jpg', use_column_width=True)
+
+st.sidebar.image('udemy.jpg')
 years = df['year'].unique().tolist()
 years.insert(0, 'All')
 selected_year = st.sidebar.selectbox('Select Year', options=years)
