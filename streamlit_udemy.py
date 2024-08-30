@@ -14,10 +14,6 @@ st.set_page_config(
 )
 df = pd.read_csv("udemy_data_clean.csv")
 st.sidebar.header('Udemy Dashboard Filter')
-#st.sidebar.image('./udemy.webp')
-uploaded_image = st.sidebar.file_uploader("Upload an image", type=["png", "jpg", "jpeg", "webp"])
-if uploaded_image is not None:
-    st.sidebar.image(uploaded_image)
 st.sidebar.write('This dataset contain information about online courses, from a platform like Udemy.')
 
 years = df['year'].unique().tolist()
@@ -134,12 +130,14 @@ with c2:
     st.plotly_chart(fig5,use_container_width=True)
 
     num_sub = df_cop.groupby('year')['num_subscribers'].sum()
-    fig6 = px.line(data_frame=num_sub, x = num_sub.index , y = num_sub.values)
+    fig6 = px.line(data_frame=num_sub, x = num_sub.index , y = num_sub.values,title='Total Profit for each year',
+                  labels={'year':'Year','y':'Profit'})
     st.plotly_chart(fig6,use_container_width=True)
 
 sub_of_paid = df_cop.groupby(['year','is_paid'])['num_subscribers'].sum().reset_index()
-fig7 = px.line(data_frame=sub_of_paid , x = 'year' , y = 'num_subscribers', color= 'is_paid',color_discrete_map={
+fig7 = px.line(data_frame=sub_of_paid , x = 'year' , y = 'num_subscribers',title='Total Number of Subscribers by year based on system payment', color= 'is_paid',color_discrete_map={
 True: 'blue',   
-False: 'red'    
+False: 'red'
+    
  })
 st.plotly_chart(fig7,use_container_width=True)
